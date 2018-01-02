@@ -21,7 +21,8 @@ def get_word_length(n):
         for word in list(permutations(word_combination)):
             word = ''.join(word)
             if english_words.get(word):
-                word_list.append(word)
+                if word not in word_list:
+                    word_list.append(word)
     return word_list
 
 
