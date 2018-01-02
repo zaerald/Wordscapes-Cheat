@@ -34,8 +34,9 @@ def sort_print_words(words):
 
 print('Enter available letters: ', end='')
 available_letters = list(input())
-print('Enter Desired Word Length')
-print('(0 or greater than or equal to the length of available letters shows all valid words): ', end='')
+print('(If the given is greater than or equal to length of available letters shows all valid words)')
+print('Enter Desired Word Length: ', end='')
+
 word_length = int(input())
 
 start_time = time.time()
