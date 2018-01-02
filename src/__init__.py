@@ -15,23 +15,39 @@ def load_words():
         return str(e)
 
 
-print('Enter available letters: ', end='')
-english_words = load_words()
-available_letters = list(input())
-start_time = time.time()
-
-
-for i in range(3, len(available_letters) + 1):
-    print('=' * 20)
-    print(f'Word Length {i}:')
+def get_word_length(n):
     word_list = []
     for word_combination in list(combinations(available_letters, i)):
         for word in list(permutations(word_combination)):
             word = ''.join(word)
             if english_words.get(word):
                 word_list.append(word)
-    word_list.sort()
-    for word in word_list:
-        print(word)
+    return word_list
 
+
+def sort_print_words(words):
+    words.sort()
+    for w in words:
+        print(w)
+
+
+print('Enter available letters: ', end='')
+available_letters = list(input())
+print('Enter Desired Word Length')
+print('(0 or greater than or equal to the length of available letters shows all valid words): ', end='')
+word_length = int(input())
+
+start_time = time.time()
+english_words = load_words()
+
+if word_length > 0 or word_length <= len(available_letters):
+    for i in range(3, len(available_letters) + 1):
+        print('=' * 20)
+        print(f'Word Length {i}:')
+        sort_print_words(get_word_length(i))
+
+else:
+    sort_print_words(get_word_length(word_length))
+
+print('')
 print(f'Program Finished at {time.time() - start_time:.4f}s')
