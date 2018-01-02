@@ -17,7 +17,7 @@ def load_words():
 
 def get_word_length(n):
     word_list = []
-    for word_combination in list(combinations(available_letters, i)):
+    for word_combination in list(combinations(available_letters, n)):
         for word in list(permutations(word_combination)):
             word = ''.join(word)
             if english_words.get(word):
@@ -42,7 +42,7 @@ word_length = int(input())
 start_time = time.time()
 english_words = load_words()
 
-if word_length > 0 or word_length <= len(available_letters):
+if word_length <= 0 or word_length >= len(available_letters):
     for i in range(3, len(available_letters) + 1):
         print('=' * 20)
         print(f'Word Length {i}:')
